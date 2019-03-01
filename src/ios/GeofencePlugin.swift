@@ -406,7 +406,7 @@ class GeoNotificationManager : NSObject, CLLocationManagerDelegate {
     func notifyAbout(_ geo: JSON) {
         log("Creating notification")
         let content = UNMutableNotificationContent()
-        content.title = "Hi from Plot!"
+        content.title = geo["notification"]["title"].stringValue
         content.body = geo["notification"]["text"].stringValue
         content.sound = UNNotificationSound.default
         

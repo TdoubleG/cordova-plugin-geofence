@@ -46,6 +46,7 @@ func log(_ messages: [String]) {
         )
     }
     
+    @objc
     func initialize(_ command: CDVInvokedUrlCommand) {
         log("Plugin initialization")
         promptForNotificationPermission();
@@ -77,12 +78,14 @@ func log(_ messages: [String]) {
         commandDelegate!.send(pluginResult, callbackId: command.callbackId)
     }
     
+    @objc
     func ping(_ command: CDVInvokedUrlCommand) {
         log("Ping")
         let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
         commandDelegate!.send(pluginResult, callbackId: command.callbackId)
     }
     
+    @objc
     func promptForNotificationPermission() {
         let notificaitonOptions: UNAuthorizationOptions = [.alert, .sound, .badge];
         notificationCenter.requestAuthorization(options: notificaitonOptions){ (granted, error) in
@@ -98,6 +101,7 @@ func log(_ messages: [String]) {
         }
     }
     
+    @objc
     func addOrUpdate(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(qos: priority).async {
             // do some task
@@ -111,6 +115,7 @@ func log(_ messages: [String]) {
         }
     }
     
+    @objc
     func getWatched(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(qos: priority).async {
             let watched = self.geoNotificationManager.getWatchedGeoNotifications()!
@@ -122,6 +127,7 @@ func log(_ messages: [String]) {
         }
     }
     
+    @objc
     func remove(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(qos: priority).async {
             for id in command.arguments {
@@ -134,6 +140,7 @@ func log(_ messages: [String]) {
         }
     }
     
+    @objc
     func removeAll(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(qos: priority).async {
             self.geoNotificationManager.removeAllGeoNotifications()
@@ -169,6 +176,7 @@ func log(_ messages: [String]) {
         }
     }
     
+    @objc
     func evaluateJs (_ script: String) {
         if let webView = webView {
             if let uiWebView = webView as? UIWebView {

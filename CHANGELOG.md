@@ -1,5 +1,10 @@
 # ChangeLog
 
+## Version 0.7.0 - 08.04.2019
+
+- Support for Swift 5
+- Fixed Swift Syntax errors
+
 ## Version 0.6.0 - 15.04.2016
 
 - Support for Android 6 new permission acquiring model
